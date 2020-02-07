@@ -1,0 +1,28 @@
+#!/bin/bash
+echo "sudo pacman -Syuu" \
+  && sudo pacman -Syuu
+echo "pacaur -au --noedit --noconfirm" \
+  && pacaur -au --noedit --noconfirm
+echo "sudo paccache -r" \
+  && sudo paccache -r
+echo "sudo pacman -Scc --noconfirm" \
+  && sudo pacman -Scc --noconfirm
+echo "pacaur --aur-cleanall --noconfirm" \
+  && pacaur --aur-cleanall --noconfirm
+echo "pacaur --aur-clean --noconfirm" \
+  && pacaur --aur-clean --noconfirm
+echo "docker system prune -f" \
+  && docker system prune -f \
+  && echo "docker images --format "{{.Repository}}:{{.Tag}}" | parallel --no-run-if-empty -j1 -n1 docker pull {} " \
+  && docker images --format "{{.Repository}}:{{.Tag}}" | parallel --no-run-if-empty -j1 -n1 docker pull {}  \
+  && echo "docker system prune -f" \
+  && docker system prune -f
+echo "npm update" \
+  && npm update
+echo "sudo npm update -g" \
+  && sudo npm update -g
+echo " pacman -Qtdq | parallel --no-run-if-empty -j2% -n1 sudo pacman --noconfirm -Rns {}" \
+  && pacman -Qtdq | parallel --no-run-if-empty -j2% -n1 sudo pacman --noconfirm -Rns {}
+echo "sudo pacman -Scc --noconfirm" \
+  && sudo pacman -Scc --noconfirm
+exit 0
