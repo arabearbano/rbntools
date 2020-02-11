@@ -38,5 +38,5 @@ if [ ! -d $WORKDIR ]; then
 fi
 
 cd $WORKDIR
-find . -type f -name 'pom.xml' -print0 | xargs -0 -I SOURCES bash -c "echo SOURCES; mvn -T 5C dependency:resolve -f SOURCES;"
+find . -type f -name 'pom.xml' -print0 | parallel --no-run-if-empty -j2% -n1  -0 -I SOURCES "echo SOURCES; mvn -T 5C dependency:resolve -f SOURCES;"
 exit 0
