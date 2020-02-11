@@ -1,0 +1,51 @@
+#!/bin/bash
+function help {
+      echo "package all projects in directory"
+      echo "    no argument defaults to working directory and multiple projects"
+      echo " -d directory containing maven projects"
+      echo " -p single project mode"
+      echo " ? --help print this help"	
+}
+
+WORKDIR=`pwd`
+
+for ((i=1;i<=$#;i++));
+do
+  parameter=${!i}
+  case $parameter in
+    -d ) 
+      ((i++))
+      WORKDIR=${!i}
+      ;;
+    -p )
+      ((i++))
+      PROJECT="TRUE"
+      ;;
+    [?] | --help )
+      help
+      exit 2
+      ;;
+    * )
+      echo "Invalid argument: ${!i}"
+      help
+      exit 2
+      ;;
+  esac
+done;
+
+if [ -z $WORKDIR ]; then
+	echo "Not a valid directory"
+	exit 1 
+fi
+if [ ! -d $WORKDIR ]; then
+	echo "Directory doesn't exist"
+	exit 1 
+fi
+
+cd $WORKDIR
+if  [ ! -z $PROJECT ]; then
+  mvn clean package -Dasciidoctor.skip=true -DskipTests=true
+  exit 0
+fi
+find . -maxdepth 1 -type d \( ! -name . \) -exec bash -c "cd '{}' && pwd && mvn -T 5C clean package -Dasciidoctor.skip=true -Dmaven.test.skip=true" \;
+exit 0

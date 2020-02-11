@@ -1,0 +1,25 @@
+#!/bin/bash
+function help {
+      echo "Print running containers with the following format"
+      echo "   ID  IMAGE  STATUS"
+      echo " ? --help print this help"	
+}
+
+
+for ((i=1;i<=$#;i++));
+do
+  parameter=${!i}
+  case $parameter in
+    [?] | --help )
+      help
+      exit 2
+      ;;
+    * )
+      echo "Invalid argument: ${!i}"
+      help
+      exit 2
+      ;;
+  esac
+done;
+docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Status}}"
+exit 0

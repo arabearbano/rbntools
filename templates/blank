@@ -1,0 +1,44 @@
+#!/bin/bash
+function help {
+      echo "This is help"
+      echo "    no argument defaults to working directory"
+      echo " -d directory"
+      echo " ? --help print this help"	
+}
+
+WORKDIR=`pwd`
+
+for ((i=1;i<=$#;i++));
+do
+  parameter=${!i}
+  case $parameter in
+    -d ) 
+      ((i++))
+      WORKDIR=${!i}
+      ;;
+    [?] | --help )
+      help
+      exit 2
+      ;;
+    * )
+      echo "Invalid argument: ${!i}"
+      help
+      exit 2
+      ;;
+  esac
+done;
+
+if [ -z $WORKDIR ]; then
+	echo "Not a valid directory"
+	exit 1 
+fi
+if [ ! -d $WORKDIR ]; then
+	echo "Directory doesn't exist"
+	exit 1 
+fi
+
+cd $WORKDIR
+
+#Actual functionality goes here.
+
+exit 0

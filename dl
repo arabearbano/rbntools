@@ -1,0 +1,48 @@
+#!/bin/bash
+function help {
+      echo " Runs a local container with dynamoDB"
+      echo "    no argument defaults to working directory"
+      echo " -p port"
+      echo " ? --help print this help"	
+}
+
+WORKDIR=`pwd`
+PORT=8001
+
+for ((i=1;i<=$#;i++));
+do
+  parameter=${!i}
+  case $parameter in
+    -p )
+      ((i++))
+      PORT=${!i}
+      ;;
+    -d ) 
+      ((i++))
+      WORKDIR=${!i}
+      ;;
+    [?] | --help )
+      help
+      exit 2
+      ;;
+    * )
+      echo "Invalid argument: ${!i}"
+      help
+      exit 2
+      ;;
+  esac
+done;
+
+if [ -z $WORKDIR ]; then
+	echo "Not a valid directory"
+	exit 1 
+fi
+if [ ! -d $WORKDIR ]; then
+	echo "Directory doesn't exist"
+	exit 1 
+fi
+
+cd $WORKDIR
+
+docker run --rm -p $PORT:8000 fingershock/dynamodb-local -inMemory -sharedDb
+exit 0

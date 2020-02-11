@@ -1,0 +1,10 @@
+#!/bin/bash
+SOURCE=$1
+DEST=$2
+echo  moving "${SOURCE}" to "${DEST}"
+find  "${SOURCE}" -type d -print0 | xargs -0 -I dr  mkdir -vp "${DEST}"/dr 
+find  "${SOURCE}" -type f -print0 | xargs -0 -I SOURCES mv -nv SOURCES "${DEST}"/SOURCES
+rsync --remove-source-files --progress -azvh "${SOURCE}" "${DEST}"
+echo removing "${SOURCE}"
+find "${SOURCE}" -depth -type d  -empty -print0 | xargs -0 -I DIRECTORY rmdir -v DIRECTORY
+exit 0
