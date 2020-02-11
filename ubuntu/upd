@@ -1,0 +1,45 @@
+echo "sudo apt-get -y -q update" \
+  && sudo apt-get -y -q update \
+  && echo "sudo apt-get -y -q upgrade" \
+  && sudo apt-get -y -q upgrade \
+  && echo "sudo apt-get -y -q dist-upgrade" \
+  && sudo apt-get -y -q dist-upgrade \
+  && echo "sudo apt-get -y -q autoremove" \
+  && sudo apt-get -y -q autoremove \
+  && echo "sudo snap refresh" \
+  && sudo snap refresh \
+  && echo "sudo apt --fix-broken install" \
+  && sudo apt --fix-broken install
+
+#echo "docker images --format "{{.Repository}}:{{.Tag}}" --filter "reference=*plantt*"| xargs -L1 docker rmi -f " \
+#  && docker images --format "{{.Repository}}:{{.Tag}}" --filter "reference=*plantt*"| xargs -L1 docker rmi -f 
+
+echo "docker system prune -f" \
+  && docker system prune -f \
+  && echo " docker images --format "{{.Repository}}:{{.Tag}}" | xargs -L1 docker pull " \
+  && docker images --format "{{.Repository}}:{{.Tag}}" | xargs -L1 docker pull 
+
+echo "docker system prune -f" \
+  && docker system prune -f
+
+echo "sudo -H pip3 install --upgrade awscli" \
+  && sudo -H pip3 install --upgrade awscli  
+
+ echo "sudo -H pip3 install --upgrade pgcli" \
+    && sudo -H pip3 install --upgrade pgcli
+
+echo "sudo -H pip3 install --upgrade mycli" \
+  && sudo -H pip3 install --upgrade mycli
+
+echo "sudo -H pip3 install --upgrade postman_repl" \
+ && sudo -H pip3 install --upgrade postman_repl
+
+echo "npm update" \
+  && npm update \
+  && echo "sudo npm update -g" \
+  && sudo npm update -g
+#  && echo "npm-install-peers" \
+#  && npm-install-peers
+
+echo "sudo npm install -g npm" \
+  && sudo npm install -g npm
