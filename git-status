@@ -38,5 +38,5 @@ if [ ! -d $WORKDIR ]; then
 fi
 
 cd $WORKDIR
-find . -maxdepth 1 -type d \( ! -name . \) | parallel --no-run-if-empty -j2% -n1 cd '{}' && pwd && git status
+find . -maxdepth 1 -type d \( ! -name . \) | parallel --no-run-if-empty -j2% -n1 "cd '{}' && pwd && git status"
 exit 0
