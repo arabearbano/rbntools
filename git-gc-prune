@@ -1,0 +1,42 @@
+#!/bin/bash
+function help {
+      echo "git status all projects in directory"
+      echo "    no argument defaults to working directory"
+      echo " -d directory containing maven projects "
+      echo " ? --help print this help"	
+}
+
+WORKDIR=`pwd`
+
+for ((i=1;i<=$#;i++));
+do
+  parameter=${!i}
+  case $parameter in
+    -d ) 
+      ((i++))
+      WORKDIR=${!i}
+      ;;
+    [?] | --help )
+      help
+      exit 2
+      ;;
+    * )
+      echo "Invalid argument: ${!i}"
+      help
+      exit 2
+      ;;
+  esac
+done;
+
+if [ -z $WORKDIR ]; then
+	echo "Not a valid directory"
+	exit 1 
+fi
+if [ ! -d $WORKDIR ]; then
+	echo "Directory doesn't exist"
+	exit 1 
+fi
+
+cd $WORKDIR
+find . -maxdepth 1 -type d \( ! -name . \) | parallel --no-run-if-empty -j2% -n1 "cd '{}' && pwd && git gc --aggressive && git remote prune origin"
+exit 0
