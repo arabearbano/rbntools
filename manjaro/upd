@@ -21,8 +21,14 @@ echo "npm update" \
   && npm update
 echo "sudo npm update -g" \
   && sudo npm update -g
+echo "sudo npm install -g npm" \
+  && sudo npm install -g npm
 echo " pacman -Qtdq | parallel --no-run-if-empty -j2% -n1 sudo pacman --noconfirm -Rns {}" \
   && pacman -Qtdq | parallel --no-run-if-empty -j2% -n1 sudo pacman --noconfirm -Rns {}
 echo "sudo pacman -Scc --noconfirm" \
   && sudo pacman -Scc --noconfirm
+echo "sudo pamac remove -o --no-confirm" \
+  && sudo pamac  remove -o --no-confirm \
+  && echo "sudo pamac clean --no-confirm --keep 0" \
+  && sudo pamac clean --no-confirm --keep 0
 exit 0
