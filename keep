@@ -1,9 +1,8 @@
 #!/bin/bash
 function help {
-      echo "Launch google in incognito"
+      echo "Opens keep in chrome window"
       echo " ? --help print this help"	
 }
-
 
 
 for ((i=1;i<=$#;i++));
@@ -22,6 +21,6 @@ do
   esac
 done;
 
-#Actual functionality goes here.
-google-chrome --new-window --incognito --profile-directory=Default
+google-chrome --profile-directory=Default --app=https://keep.google.com/
+
 exit 0

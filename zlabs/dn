@@ -1,9 +1,8 @@
 #!/bin/bash
 function help {
-      echo "Launch google in incognito"
+      echo "Create a todo task marked as done"
       echo " ? --help print this help"	
 }
-
 
 
 for ((i=1;i<=$#;i++));
@@ -14,14 +13,11 @@ do
       help
       exit 2
       ;;
-    * )
-      echo "Invalid argument: ${!i}"
-      help
-      exit 2
-      ;;
   esac
 done;
-
+ALL_PARAMS="$@"
+DATE=`date +%Y-%m-%d`
 #Actual functionality goes here.
-google-chrome --new-window --incognito --profile-directory=Default
+echo "x $DATE $DATE @me $ALL_PARAMS" >> ~/.todo-txt/done.txt
+
 exit 0
