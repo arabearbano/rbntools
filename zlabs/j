@@ -1,0 +1,25 @@
+#!/bin/bash
+function help {
+      echo "Opens jira pages"
+      echo " ? --help print this help"	
+}
+
+for ((i=1;i<=$#;i++));
+do
+  parameter=${!i}
+  case $parameter in
+    [?] | --help )
+      help
+      exit 2
+      ;;
+    * )
+      echo "Invalid argument: ${!i}"
+      help
+      exit 2
+      ;;
+  esac
+done;
+
+google-chrome --profile-directory=Default --new-window  'http://jira.ziprealty.com/secure/RapidBoard.jspa?rapidView=330&projectKey=MDP&view=planning.nodetail' 'http://jira.ziprealty.com/secure/RapidBoard.jspa?projectKey=MDP&rapidView=330' 'http://jira.ziprealty.com/issues/?filter=15165' 'http://jira.ziprealty.com/issues/?filter=15170' 'http://jira.ziprealty.com/issues/?filter=15148' 'http://jira.ziprealty.com/issues/?filter=15153' 'http://jira.ziprealty.com/issues/?filter=15154' 'http://jira.ziprealty.com/issues/?filter=15248' 'http://jira.ziprealty.com/issues/?filter=15250' 'http://jira.ziprealty.com/issues/?filter=15175' 'http://jira.ziprealty.com/issues/?filter=15176'
+
+exit 0
