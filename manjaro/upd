@@ -21,8 +21,8 @@ echo "npm update" \
   && npm update
 echo "sudo npm update -g" \
   && sudo npm update -g
-echo "sudo npm install -g npm" \
-  && sudo npm install -g npm
+#echo "sudo npm install -g npm" \
+#  && sudo npm install -g npm
 echo " pacman -Qtdq | parallel --no-run-if-empty -j2% -n1 sudo pacman --noconfirm -Rns {}" \
   && pacman -Qtdq | parallel --no-run-if-empty -j2% -n1 sudo pacman --noconfirm -Rns {}
 echo "sudo pacman -Scc --noconfirm" \
