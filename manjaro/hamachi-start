@@ -1,0 +1,3 @@
+#!/bin/sh
+sudo systemctl start logmein-hamachi.service
+exit 0

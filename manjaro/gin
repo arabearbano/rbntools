@@ -1,0 +1,21 @@
+#!/bin/bash
+function help {
+      echo "Opens page in incognito chrome window"
+      echo " ? --help print this help"	
+}
+
+
+for ((i=1;i<=$#;i++));
+do
+  parameter=${!i}
+  case $parameter in
+    [?] | --help )
+      help
+      exit 2
+      ;;
+  esac
+done;
+
+google-chrome-unstable --profile-directory=Default --new-window --incognito  "$@"
+
+exit 0
