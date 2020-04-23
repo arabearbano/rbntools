@@ -21,6 +21,6 @@ do
   esac
 done;
 
-google-chrome --profile-directory=Default --new-window  http://jenkins-master.aur.ziprealty.com/job/Data%20Platform/job/nifi-zap/job/master/ http://jenkins-master.aur.ziprealty.com/job/Data%20Platform/job/mls-data-platform-sync/job/rentalcom/ http://jenkins-master.aur.ziprealty.com/job/Data%20Platform/job/mls-data-platform/job/rentalcom/ http://jenkins-master.aur.ziprealty.com/job/Data%20Platform/job/mls-dataplatform-mongoconnector/job/rentalcom/ http://jenkins-master.aur.ziprealty.com/job/Data%20Platform/job/mls-dataplatform-transformations/job/rentalcom/ http://jenkins-master.aur.ziprealty.com/job/Data%20Platform/job/mls_data_platform_web_ui/job/rentalcom/
+google-chrome --profile-directory=Default --new-window  http://jenkins-master.aur.ziprealty.com/job/Data%20Platform/job/nifi-zap/job/rentalcom/ http://jenkins-master.aur.ziprealty.com/job/Data%20Platform/job/mls-data-platform-sync/job/rentalcom/ http://jenkins-master.aur.ziprealty.com/job/Data%20Platform/job/mls-data-platform/job/rentalcom/ http://jenkins-master.aur.ziprealty.com/job/Data%20Platform/job/mls-dataplatform-mongoconnector/job/rentalcom/ http://jenkins-master.aur.ziprealty.com/job/Data%20Platform/job/mls-dataplatform-transformations/job/rentalcom/ http://jenkins-master.aur.ziprealty.com/job/Data%20Platform/job/mls_data_platform_web_ui/job/rentalcom/
 
 exit 0
