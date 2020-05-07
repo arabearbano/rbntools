@@ -1,0 +1,25 @@
+#!/bin/bash
+function help {
+      echo "Exports cannonical mapping from MLS in xform1"
+      echo " ? --help print this help"	
+}
+
+
+for ((i=1;i<=$#;i++));
+do
+  parameter=${!i}
+  case $parameter in
+    [?] | --help )
+      help
+      exit 2
+      ;;
+    * )
+      PARAM=$1
+      ;;
+  esac
+done;
+
+#Actual functionality goes here.
+export TMP_PASS="realty07";  mysql -h vxform1.aur.ziprealty.com --user=ziprealty --password=$TMP_PASS -D ziprealty  -e "SELECT '$1', zf.zf_name, mm.mlsmap_field FROM mls_map AS mm, zip_fields AS zf WHERE mm.mlsmap_zf = zf.zf_id  AND mm.map_mls IN (SELECT mls_id FROM mls WHERE mls_code = '$1') AND mm.mlsmap_field <> '\'\'' ORDER BY zf.zf_name;" | sed 's/\t/,/g' > /home/roberto.delvalle/mls/xform1/$1.csv
+
+exit 0

@@ -34,6 +34,8 @@ echo "sudo -H pip3 install --upgrade mycli" \
 echo "sudo -H pip3 install --upgrade postman_repl" \
  && sudo -H pip3 install --upgrade postman_repl
 
+echo "sudo -H pip3 install --upgrade httpie" \
+  && sudo -H pip3 install --upgrade httpie
 echo "npm update" \
   && npm update \
   && echo "sudo npm update -g" \
