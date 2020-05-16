@@ -21,6 +21,6 @@ do
   esac
 done;
 
-#Actual functionality goes here.
+gin https://www.instagram.com
 
 exit 0
