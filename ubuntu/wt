@@ -1,6 +1,6 @@
 #!/bin/bash
 function help {
-      echo "Create a todo task marked as done"
+      echo "Set window tittle"
       echo " ? --help print this help"	
 }
 
@@ -15,9 +15,7 @@ do
       ;;
   esac
 done;
-ALL_PARAMS="$@"
-DATE=`date +%Y-%m-%d`
 #Actual functionality goes here.
-echo "x $DATE $DATE @me $ALL_PARAMS" >> ~/.todo-txt/done.txt
+wmctrl -r :ACTIVE: -N "$@"
 
 exit 0
