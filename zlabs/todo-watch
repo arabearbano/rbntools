@@ -1,0 +1,26 @@
+#!/bin/bash
+function help {
+      echo "Watch todo list on a 10 seconds refresh"
+      echo " ? --help print this help"	
+}
+
+
+for ((i=1;i<=$#;i++));
+do
+  parameter=${!i}
+  case $parameter in
+    [?] | --help )
+      help
+      exit 2
+      ;;
+    * )
+      echo "Invalid argument: ${!i}"
+      help
+      exit 2
+      ;;
+  esac
+done;
+
+#Actual functionality goes here.
+watch -c -n 10 t list
+exit 0
