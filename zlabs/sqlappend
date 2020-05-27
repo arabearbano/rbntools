@@ -63,7 +63,7 @@ git pull
 tmppp="tmppp"
 tmpfile="/tmp/$tmppp"
 mkfifo "$tmpfile"
-git diff -z --name-only "origin/$DESTINY"  | grep -z  '.sql'  | sort -z | xargs --null -r -n 1 -I {} bash -c "echo {} && echo >> $tmppp && echo >> $tmppp && echo '--'{} >> $tmppp && cat \"{}\" >> $tmppp && echo >> $tmppp && echo >> $tmppp"
+git diff -z --name-only "origin/$DESTINY"  | grep -z  '.sql' | grep -z -v  'oracle'  | sort -z | xargs --null -r -n 1 -I {} bash -c "echo {} && echo >> $tmppp && echo >> $tmppp && echo '--'{} >> $tmppp && cat \"{}\" >> $tmppp && echo >> $tmppp && echo >> $tmppp"
 echo "$OUTPUT"
 cat -s < "$tmppp" > $OUTPUT
 rm "$tmpfile"
