@@ -2,7 +2,7 @@
 function help {
       echo "Compares origin and destination branches and creates a sql script with all the scripts in the difference."
       echo " ? --help print this help"
-      echo " -o Output file. Default is $HOME/mls-queries/deployments-DESTINATION_BRANCH-`date +%Y%m%d`.sql"
+#      echo " -o Output file. Default is $HOME/mls-queries/deployments-DESTINATION_BRANCH-`date +%Y%m%d`.sql"
       echo " -t Destination branch. Defaults to stage."
       echo " -f Origin branch. Defaults to development."
       echo " -p Project directory. Defaults to current directory."
@@ -54,7 +54,8 @@ echo "Directory doesn't exist"
 exit 1 
 fi
 if [ -z $OUTPUT ]; then
-  OUTPUT="$HOME/mls-queries/deployments-$DESTINY-`date +%Y%m%d`.sql"
+  OUTPUT="$HOME/mls-queries/deployments-$DESTINY-postgres-`date +%Y%m%d`.sql"
+  OUTPUT_ORACLE="$HOME/mls-queries/deployments-$DESTINY-oracle-`date +%Y%m%d`.sql"
 fi
 cd $WORKDIR
 git checkout $ORIGIN
@@ -66,6 +67,10 @@ mkfifo "$tmpfile"
 git diff -z --name-only "origin/$DESTINY"  | grep -z  '.sql' | grep -z -v  'oracle'  | sort -z | xargs --null -r -n 1 -I {} bash -c "echo {} && echo >> $tmppp && echo >> $tmppp && echo '--'{} >> $tmppp && cat \"{}\" >> $tmppp && echo >> $tmppp && echo >> $tmppp"
 echo "$OUTPUT"
 cat -s < "$tmppp" > $OUTPUT
+echo  > "$tmppp"
+git diff -z --name-only "origin/$DESTINY"  | grep -z  '.sql' | grep -z 'oracle'  | sort -z | xargs --null -r -n 1 -I {} bash -c "echo {} && echo >> $tmppp && echo >> $tmppp && echo '--'{} >> $tmppp && cat \"{}\" >> $tmppp && echo >> $tmppp && echo >> $tmppp"
+echo "$OUTPUT"
+cat -s < "$tmppp" > $OUTPUT_ORACLE
 rm "$tmpfile"
 rm "$tmppp"
 exit 0

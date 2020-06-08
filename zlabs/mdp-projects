@@ -1,0 +1,51 @@
+#!/bin/bash
+function help {
+      echo "Prints a list of MDP projects"
+      echo " ? --help print this help"	
+}
+
+PROJECTS="nifi-zap;450 mls-data-platform-sync;916 mls-dataplatform-transformations;1030 mls-data-platform;915 mls-dataplatform-mongoconnector;1716 mls_data_platform_web_ui;951 mls-data-platform-aws;1742"
+
+for ((i=1;i<=$#;i++));
+do
+  parameter=${!i}
+  case $parameter in
+    -1)
+      LIST="TRUE"
+      ;;
+    -p)
+      PROJECT="TRUE"
+      ;;
+    [?] | --help )
+      help
+      exit 2
+      ;;
+    * )
+      echo "Invalid argument: ${!i}"
+      help
+      exit 2
+      ;;
+  esac
+done;
+
+#Actual functionality goes here.
+if [ -z $LIST ]; then
+  if [ -z $PROJECT ]; then
+    echo "$PROJECTS"
+  else
+    PROJECTS="${PROJECTS//[[:digit:]]/}"
+    PROJECTS="${PROJECTS//;/}"
+    echo $PROJECTS
+  fi
+else
+  for i in  $(echo  "$PROJECTS" | tr ' ' '\n')
+  do
+    if [ -z $PROJECT ]; then
+      echo "$i"
+    else
+      project_details_array=($(echo  "$i" | tr ';' '\n'))
+      echo ${project_details_array[0]}
+    fi
+  done
+fi
+exit 0

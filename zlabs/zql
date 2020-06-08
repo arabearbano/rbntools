@@ -4,30 +4,27 @@ function help {
   echo " ? --help print this help"
 }
 
-environments_list="qa stage rentalcom prod"
 clients_list="postgres oracle mysql"
+CONFIGURATION_FILE="$HOME/.config/zql/zql.conf"
 
-
-function list_environments{
-  echo $environments_list
+function read_properties {
+if [ -f "$CONFIGURATION_FILE" ]; then
+  while IFS='=' read -r key value
+  do
+    key=$(echo $key | tr '.' '_')
+    eval ${key}=\${value}
+  done < "$CONFIGURATION_FILE"
+else
+  echo "No properties file found in $CONFIGURATION_FILE"
+  exit 1
+fi
 }
 
-functien list_clients{
+function list_clients {
   echo $clients_list
 }
 
-
-
-
-for ((i=1;i<=$#;i++));
-do
-  parameter=${!i}
-  case $parameter in
-    [?] | --help )
-      help
-      exit 2
-      ;;
-  esac
-done;
+list_clients
+read_properties
 
 exit 0

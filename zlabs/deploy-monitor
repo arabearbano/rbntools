@@ -1,0 +1,37 @@
+#!/bin/bash
+function help {
+      echo "Opens google chrome with tabs to monitor rentalcom builds"
+      echo " -t Destination branch. Defaults to stage."
+      echo " ? --help print this help"	
+}
+
+ DESTINY="stage"
+
+for ((i=1;i<=$#;i++));
+do
+  parameter=${!i}
+  case $parameter in
+    -t )
+      ((i++))
+      DESTINY=${!i}
+      ;;
+    [?] | --help )
+      help
+      exit 2
+      ;;
+    * )
+      echo "Invalid argument: ${!i}"
+      help
+      exit 2
+      ;;
+  esac
+done;
+
+for i in $(mdp-projects -1 -p)
+do
+  CHROME_URL="$CHROME_URL http://jenkins-master.aur.ziprealty.com/job/Data%20Platform/job/$i/job/$DESTINY/"
+done
+
+google-chrome --profile-directory=Default --new-window $CHROME_URL
+
+exit 0

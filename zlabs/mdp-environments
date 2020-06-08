@@ -1,0 +1,37 @@
+#!/bin/bash
+function help {
+      echo "Prints a list of MDP environments"
+      echo " ? --help print this help"	
+}
+
+ENVIRONMENTS="qa stage rentalcom prod"
+
+for ((i=1;i<=$#;i++));
+do
+  parameter=${!i}
+  case $parameter in
+    -1)
+      LIST="TRUE"
+      ;;
+    [?] | --help )
+      help
+      exit 2
+      ;;
+    * )
+      echo "Invalid argument: ${!i}"
+      help
+      exit 2
+      ;;
+  esac
+done;
+
+#Actual functionality goes here.
+if [ -z $LIST ]; then
+  echo "$ENVIRONMENTS"
+else
+  for i in  $(echo  "$ENVIRONMENTS" | tr ' ' '\n')
+  do
+    echo "$i"
+  done
+fi
+exit 0
