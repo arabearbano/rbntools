@@ -36,6 +36,10 @@ echo "sudo -H pip3 install --upgrade postman_repl" \
 
 echo "sudo -H pip3 install --upgrade httpie" \
   && sudo -H pip3 install --upgrade httpie
+
+echo "sudo -H pip3 install --upgrade parquet-cli" \
+  && sudo -H pip3 install --upgrade parquet-cli
+
 echo "npm update" \
   && npm update \
   && echo "sudo npm update -g" \
