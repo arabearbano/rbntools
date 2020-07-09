@@ -19,6 +19,6 @@ do
   esac
 done;
 
-google-chrome --profile-directory=Default --new-window --app=http://jira.ziprealty.com/browse/MDP-$TKT
+google-chrome --profile-directory=Default --new-window  --disable-setuid-sandbox --app=http://jira.ziprealty.com/browse/MDP-$TKT
 
 exit 0

@@ -70,7 +70,7 @@ echo "$OUTPUT"
 cat -s < "$tmppp" > $OUTPUT
 echo  > "$tmppp"
 git diff -z --name-only "origin/$DESTINY"  | grep -z  '.sql' | grep -z 'oracle'  | sort -z | xargs --null -r -n 1 -I {} bash -c "echo {} && echo >> $tmppp && echo >> $tmppp && echo '--'{} >> $tmppp && cat \"{}\" >> $tmppp && echo >> $tmppp && echo >> $tmppp"
-echo "$OUTPUT"
+echo "$OUTPUT_ORACLE"
 cat -s < "$tmppp" > $OUTPUT_ORACLE
 rm "$tmpfile"
 rm "$tmppp"

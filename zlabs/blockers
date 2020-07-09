@@ -1,6 +1,6 @@
 #!/bin/bash
 function help {
-      echo "Opens rbn in chrome window"
+      echo "Reads from clipboard and generetes a separated line of issuekeys"
       echo " ? --help print this help"	
 }
 
@@ -21,6 +21,6 @@ do
   esac
 done;
 
-google-chrome --profile-directory='Profile 1' --new-window --incognito --content-shell-host-window-size="508,861" https://instagram.com
+echo $( xclip -o | sed 's/\s*Actions/, /g') | xclip -selection c
 
 exit 0
