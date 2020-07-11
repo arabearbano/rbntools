@@ -1,10 +1,11 @@
+
 #!/bin/bash
 function help {
       echo "Opens MDP jira issue in chrome window"
       echo " ? --help print this help"	
 }
 
-
+tkts=""
 for ((i=1;i<=$#;i++));
 do
   parameter=${!i}
@@ -13,12 +14,15 @@ do
       help
       exit 2
       ;;
-    * )
-      TKT=$1
-      ;;
   esac
 done;
 
-google-chrome --profile-directory=Default --new-window  --disable-setuid-sandbox --app=http://jira.ziprealty.com/browse/MDP-$TKT
+for i in $(printf '%s\n' "$@" | sort)
+do
+  tkts=$tkts"  http://jira.ziprealty.com/browse/MDP-$i"
+
+done
+
+google-chrome --profile-directory=Default --new-window  --disable-setuid-sandbox $tkts
 
 exit 0

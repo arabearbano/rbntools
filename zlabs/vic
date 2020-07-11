@@ -1,0 +1,26 @@
+#!/bin/bash
+function help {
+      echo "Reads from clipboard and generetes a separated line of issuekeys"
+      echo " ? --help print this help"	
+}
+
+
+for ((i=1;i<=$#;i++));
+do
+  parameter=${!i}
+  case $parameter in
+    [?] | --help )
+      help
+      exit 2
+      ;;
+    * )
+      echo "Invalid argument: ${!i}"
+      help
+      exit 2
+      ;;
+  esac
+done;
+
+xclip -o | grep MDP | paste -sd, | sed 's/,M/, M/g' | xclip -selection c
+google-chrome --profile-directory=Default --new-window 'http://jira.ziprealty.com/issues/?filter=15343'
+exit 0
