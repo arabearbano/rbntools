@@ -9,19 +9,36 @@ for ((i=1;i<=$#;i++));
 do
   parameter=${!i}
   case $parameter in
-    [?] | --help )
-      help
-      exit 2
-      ;;
-    * )
-      echo "Invalid argument: ${!i}"
-      help
-      exit 2
-      ;;
+  -s )
+    ((i++))
+    STANDALONE="TRUE"
+    ;;
+  [?] | --help )
+    help
+    exit 2
+    ;;
+  * )
+    echo "Invalid argument: ${!i}"
+    help
+    exit 2
+    ;;
   esac
 done;
 
 #Actual functionality goes here.
-cat ~/.todo-txt/done.txt
+cat ~/.todo-txt/done.txt | grep '@me' | sort
+cat ~/.todo-txt/done.txt | grep -v '@me' | sort
+if [ ! -z $STANDALONE ]; then
+  echo "Press 'q' to exit"
+  count=0
+  while : ; do
+  read -n 1 k <&1
+  if [[ $k = q ]] ; then
+    printf "\nbye\n"
+    break
+  fi
+  done
+fi
+
 
 exit 0
