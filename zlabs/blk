@@ -1,9 +1,8 @@
 #!/bin/bash
 function help {
-      echo "This is help"
+      echo "Opens blockers dashboard"
       echo " ? --help print this help"	
 }
-
 
 for ((i=1;i<=$#;i++));
 do
@@ -21,6 +20,5 @@ do
   esac
 done;
 
-#Actual functionality goes here.
-gnome-terminal --hide-menubar -t "snano" -- nano -E -S -a -i -t -$ ~/.tmp.txt
+google-chrome --profile-directory=Default --new-window  'http://jira.ziprealty.com/secure/Dashboard.jspa?selectPageId=12474'
 exit 0

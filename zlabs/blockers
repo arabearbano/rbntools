@@ -21,6 +21,6 @@ do
   esac
 done;
 
-echo $( xclip -o | sed 's/\s*Actions/, /g') | xclip -selection c
+echo $( xclip -o | grep MDP | sed 's/\s*Actions/, /g') | xclip -selection c
 
 exit 0

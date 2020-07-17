@@ -1,6 +1,6 @@
 #!/bin/bash
 function help {
-      echo "This is help"
+      echo "This is morning pages"
       echo " ? --help print this help"	
 }
 
@@ -22,5 +22,5 @@ do
 done;
 
 #Actual functionality goes here.
-gnome-terminal --hide-menubar -t "snano" -- nano -E -S -a -i -l -t -$ ~/pdm/$(date +%Y%m%d)
+gnome-terminal --hide-menubar -t "pdm" -- nano -E -S -a -i -l -t -$ +1,3 ~/pdm/$(date +%Y%m%d)
 exit 0
