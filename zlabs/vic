@@ -21,6 +21,8 @@ do
   esac
 done;
 
-xclip -o | grep MDP | paste -sd, | sed 's/,M/, M/g' | xclip -selection c
-google-chrome --profile-directory=Default --new-window 'http://jira.ziprealty.com/issues/?filter=15343'
+#xclip -o | grep MDP | paste -sd, | sed 's/,M/, M/g' | xclip -selection c
+#cblockers
+#google-chrome --profile-directory=Default --new-window 'http://jira.ziprealty.com/issues/?filter=15343'
+google-chrome --profile-directory=Default --new-window "http://jira.ziprealty.com/issues/?filter=15343&jql=project%20%3D%20MDP%20AND%20status%20!%3D%20Done%20AND%20issuekey%20in%20($(cblockers))%20ORDER%20BY%20status%20DESC%2C%20\"Epic%20Link\"%20ASC%2C%20Rank%20ASC"
 exit 0

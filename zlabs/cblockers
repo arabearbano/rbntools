@@ -1,0 +1,22 @@
+#!/bin/bash
+function help {
+      echo "Reads from clipboard and generetes a separated line of issuekeys"
+      echo " ? --help print this help"	
+}
+
+
+for ((i=1;i<=$#;i++));
+do
+  parameter=${!i}
+  case $parameter in
+    [?] | --help )
+      help
+      exit 2
+      ;;
+  esac
+done;
+
+#xclip -o | fmt -w 1  | grep MDP | sed 's/\s*,//g' | paste -sd "," -   | sed 's/\s*,/,  /g' | xclip -selection c
+xclip -o | fmt -w 1  | grep MDP | sed 's/\s*,\s*//g'  | paste -sd " " - | sed 's/ /%2C/g'
+# | xclip -selection c
+exit 0
