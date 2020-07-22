@@ -18,5 +18,5 @@ do
 done;
 
 #Actual functionality goes here.
-google-chrome-stable --new-window  --profile-directory=Default
+google-chrome-stable --new-window  --profile-directory=Default "$@"
 exit 0
