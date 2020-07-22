@@ -1,6 +1,6 @@
 #!/bin/bash
 function help {
-      echo "Opens feedly in chrome window"
+      echo "Opens page in incognito rbn chrome window"
       echo " ? --help print this help"	
 }
 
@@ -13,14 +13,9 @@ do
       help
       exit 2
       ;;
-    * )
-      echo "Invalid argument: ${!i}"
-      help
-      exit 2
-      ;;
   esac
 done;
 
-google-chrome --profile-directory='Profile 1' --new-window https://feedly.com/i/index
+google-chrome-stable --profile-directory=rbn --new-window --incognito  "$@"
 
 exit 0

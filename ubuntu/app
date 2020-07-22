@@ -1,6 +1,6 @@
 #!/bin/bash
 function help {
-      echo "This is help"
+      echo "runs passed command on a standalone terminal window as if it were an app"
       echo " ? --help print this help"	
 }
 
@@ -13,14 +13,12 @@ do
       help
       exit 2
       ;;
-    * )
-      echo "Invalid argument: ${!i}"
-      help
-      exit 2
-      ;;
   esac
 done;
 
 #Actual functionality goes here.
-gnome-terminal --hide-menubar -t "yesterday" -- yesterday -s
+tittle=$1
+shift
+executable="$@"
+gnome-terminal --hide-menubar -t "$tittle" -- "$executable"
 exit 0

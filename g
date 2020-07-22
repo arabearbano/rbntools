@@ -1,8 +1,9 @@
 #!/bin/bash
 function help {
-      echo "Opens rbn in chrome window"
+      echo "Launch google in incognito"
       echo " ? --help print this help"	
 }
+
 
 
 for ((i=1;i<=$#;i++));
@@ -21,6 +22,6 @@ do
   esac
 done;
 
-google-chrome --profile-directory='Profile 1' --new-window --incognito --content-shell-host-window-size="508,861" https://instagram.com
-
+#Actual functionality goes here.
+google-chrome-stable --new-window  --profile-directory=Default
 exit 0

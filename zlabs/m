@@ -22,6 +22,6 @@ do
 
 done
 
-google-chrome --profile-directory=Default --new-window  --disable-setuid-sandbox $tkts
+g $tkts
 
 exit 0

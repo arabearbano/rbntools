@@ -20,6 +20,6 @@ do
   esac
 done;
 
-google-chrome --profile-directory=Default --new-window  'http://jira.ziprealty.com/secure/RapidBoard.jspa?rapidView=545' 'http://jira.ziprealty.com/secure/Dashboard.jspa?selectPageId=12473' 'http://jira.ziprealty.com/secure/ManageFilters.jspa?filterView=favourites'
+g  'http://jira.ziprealty.com/secure/RapidBoard.jspa?rapidView=545' 'http://jira.ziprealty.com/secure/Dashboard.jspa?selectPageId=12473' 'http://jira.ziprealty.com/secure/ManageFilters.jspa?filterView=favourites'
 
 exit 0

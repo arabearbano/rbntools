@@ -1,6 +1,6 @@
 #!/bin/bash
 function help {
-      echo "This is help"
+      echo "Opens feedly"
       echo " ? --help print this help"	
 }
 
@@ -21,6 +21,6 @@ do
   esac
 done;
 
-gin https://www.instagram.com
+rbn https://feedly.com/i/index
 
 exit 0

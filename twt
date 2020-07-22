@@ -1,6 +1,6 @@
 #!/bin/bash
 function help {
-      echo "Opens gmail"
+      echo "Opens twitter rbn in incognito"
       echo " ? --help print this help"	
 }
 
@@ -21,6 +21,6 @@ do
   esac
 done;
 
-g https://mail.google.com/
+rbni https://twitter.com/home
 
 exit 0

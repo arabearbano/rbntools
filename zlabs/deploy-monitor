@@ -32,6 +32,6 @@ do
   CHROME_URL="$CHROME_URL http://jenkins-master.aur.ziprealty.com/job/Data%20Platform/job/$i/job/$DESTINY/"
 done
 
-google-chrome --profile-directory=Default --new-window $CHROME_URL
+g $CHROME_URL
 
 exit 0

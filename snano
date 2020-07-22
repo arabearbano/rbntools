@@ -1,6 +1,6 @@
 #!/bin/bash
 function help {
-      echo "Opens twitter in incognito"
+      echo "Sublime nano for quick notes"
       echo " ? --help print this help"	
 }
 
@@ -13,14 +13,9 @@ do
       help
       exit 2
       ;;
-    * )
-      echo "Invalid argument: ${!i}"
-      help
-      exit 2
-      ;;
   esac
 done;
 
-gin https://twitter.com/home
-
+#Actual functionality goes here.
+app snano nano -E -S -a -i -t -$ ~/.tmp.txt
 exit 0

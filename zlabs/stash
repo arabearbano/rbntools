@@ -21,6 +21,6 @@ do
   esac
 done;
 
-google-chrome --profile-directory=Default --new-window  http://stash.aur.ziprealty.com:7990/dashboard
+g "http://stash.aur.ziprealty.com:7990/dashboard"
 
 exit 0

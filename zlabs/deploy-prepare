@@ -40,5 +40,5 @@ do
   CHROME_URL="$CHROME_URL http://stash.aur.ziprealty.com/projects/DP/repos/${project_details_array[0]}/pull-requests?create&targetBranch=refs%2Fheads%2F$DESTINY&sourceBranch=refs%2Fheads%2F$ORIGIN&targetRepoId=${project_details_array[1]}"
 done
 
-google-chrome --profile-directory=Default --new-window $CHROME_URL
+g $CHROME_URL
 exit 0

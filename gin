@@ -1,6 +1,6 @@
 #!/bin/bash
 function help {
-      echo "Opens page in chrome window"
+      echo "Opens page in incognito chrome window"
       echo " ? --help print this help"	
 }
 
@@ -16,6 +16,6 @@ do
   esac
 done;
 
-google-chrome-unstable --profile-directory=Default --new-window  "$@"
+google-chrome-stable --profile-directory=Default --new-window --incognito  "$@"
 
 exit 0
