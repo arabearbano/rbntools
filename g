@@ -1,6 +1,6 @@
 #!/bin/bash
 function help {
-      echo "Launch google in incognito"
+      echo "Launch google in new window"
       echo " ? --help print this help"	
 }
 
@@ -11,11 +11,6 @@ do
   parameter=${!i}
   case $parameter in
     [?] | --help )
-      help
-      exit 2
-      ;;
-    * )
-      echo "Invalid argument: ${!i}"
       help
       exit 2
       ;;
