@@ -1,7 +1,7 @@
 #!/bin/bash
 function help {
       echo "runs passed command on a standalone terminal window as if it were an app"
-      echo " ? --help print this help"	
+      echo " ? --help print this help"
 }
 
 
@@ -19,6 +19,5 @@ done;
 #Actual functionality goes here.
 tittle=$1
 shift
-executable="$@"
-gnome-terminal --hide-menubar -t "$tittle" -- "$executable"
+gnome-terminal --hide-menubar -t "$tittle" -- "$@"
 exit 0
