@@ -1,32 +1,65 @@
 #!/bin/bash
 echo "sudo pacman -Syuu" \
   && sudo pacman -Syuu
+
 echo "pacaur -au --noedit --noconfirm" \
   && pacaur -au --noedit --noconfirm
+
 echo "sudo paccache -r" \
   && sudo paccache -r
+
 echo "sudo pacman -Scc --noconfirm" \
   && sudo pacman -Scc --noconfirm
+
 echo "pacaur --aur-cleanall --noconfirm" \
   && pacaur --aur-cleanall --noconfirm
+
 echo "pacaur --aur-clean --noconfirm" \
   && pacaur --aur-clean --noconfirm
+
 echo "docker system prune -f" \
   && docker system prune -f \
   && echo 'docker images --format "{{.Repository}}:{{.Tag}}" | xargs -L1 docker pull ' \
   && docker images --format "{{.Repository}}:{{.Tag}}" | xargs -L1 docker pull  \
   && echo "docker system prune -f" \
   && docker system prune -f
+
 echo "npm update" \
   && npm update
+
 echo "sudo npm update -g" \
   && sudo npm update -g
+
 echo ' pacman -Qtdq | parallel --no-run-if-empty -j2% -n1 sudo pacman --noconfirm -Rns {}' \
   && pacman -Qtdq | parallel --no-run-if-empty -j2% -n1 sudo pacman --noconfirm -Rns {}
+
 echo "sudo pacman -Scc --noconfirm" \
   && sudo pacman -Scc --noconfirm
+
 echo "sudo pamac remove -o --no-confirm" \
   && sudo pamac  remove -o --no-confirm \
   && echo 'sudo pamac clean --no-confirm --keep 0' \
   && sudo pamac clean --no-confirm --keep 0
+
+echo "sudo -H pip3 install --upgrade pgcli" \
+  && sudo -H pip3 install --upgrade pgcli
+
+echo "sudo -H pip3 install --upgrade mycli" \
+  && sudo -H pip3 install --upgrade mycli
+
+echo "sudo -H pip3 install -I PyMySQL==0.9.2" \
+  && sudo -H pip3 install -I PyMySQL==0.9.2
+
+echo "sudo -H pip3 install --upgrade postman_repl" \
+  && sudo -H pip3 install --upgrade postman_repl
+
+echo "sudo -H pip3 install --upgrade httpie" \
+  && sudo -H pip3 install --upgrade httpie
+
+echo "sudo -H pip3 install --upgrade parquet-cli" \
+  && sudo -H pip3 install --upgrade parquet-cli
+
+echo "npm update" \
+  && npm update
+
 exit 0
