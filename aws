@@ -1,0 +1,3 @@
+#!/bin/bash
+docker run --rm -it -v $HOME/.aws:/root/.aws -v $(pwd):/aws amazon/aws-cli $@
+exit 0
