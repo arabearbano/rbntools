@@ -22,5 +22,5 @@ do
 done;
 
 #Actual functionality goes here.
-app "pdm"  nano -E -S -a -i -l -t -$ +1,3 ~/pdm/$(date +%Y%m%d)
+app "pdm"  nano -E -S -a -i -t -$ +1,3 ~/pdm/$(date +%Y%m%d)
 exit 0
