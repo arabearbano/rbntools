@@ -20,5 +20,5 @@ done;
 tittle=$1
 shift 1
 executable="$@"
-xfce4-terminal -T "$tittle" --hide-borders --hide-toolbar --hide-scrollbar --hide-menubar -e "$executable"
+xfce4-terminal -T "$tittle" --hide-borders --hide-toolbar --hide-scrollbar --hide-menubar $([[ "$tittle" == "spotify" ]] && echo " --geometry 80x24+3100+0") -e "$executable"
 exit 0
