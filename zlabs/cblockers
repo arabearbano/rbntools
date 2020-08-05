@@ -17,6 +17,6 @@ do
 done;
 
 #xclip -o | fmt -w 1  | grep MDP | sed 's/\s*,//g' | paste -sd "," -   | sed 's/\s*,/,  /g' | xclip -selection c
-xclip -o | fmt -w 1  | grep MDP | sed 's/\s*,\s*//g'  | paste -sd " " - | sed 's/ /%2C/g'
+xclip -o | fmt -w 1  | grep "MDP-" | sed 's/\s*,\s*//g'  | paste -sd " " - | sed 's/ /%2C/g'
 # | xclip -selection c
 exit 0
