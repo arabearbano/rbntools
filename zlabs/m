@@ -16,7 +16,7 @@ do
   esac
 done;
 
-for i in $(printf '%s\n' "$@" | sort)
+for i in $(printf '%s\n' "$@" | sort | uniq)
 do
   tkts=$tkts"  http://jira.ziprealty.com/browse/MDP-$i"
 
