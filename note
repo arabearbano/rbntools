@@ -1,0 +1,21 @@
+#!/bin/bash
+function help {
+      echo "Sublime nano for quick notes"
+      echo " ? --help print this help"	
+}
+
+
+for ((i=1;i<=$#;i++));
+do
+  parameter=${!i}
+  case $parameter in
+    [?] | --help )
+      help
+      exit 2
+      ;;
+  esac
+done;
+
+#Actual functionality goes here.
+app "$1" nano -E -S -a -i -t -$  ~/notes/"$1"
+exit 0
