@@ -8,8 +8,8 @@ echo "sudo apt-get -y -q update" \
   && sudo apt-get -y -q autoremove --purge \
   && echo "sudo snap refresh" \
   && sudo snap refresh \
-  && echo "sudo remove-old-snaps" \
-  && sudo remove-old-snaps \
+  && echo "sudo remove old snaps" \
+  && snap list --all | while read snapname ver rev trk pub notes; do if [[ $notes = *disabled* ]]; then sudo snap remove "$snapname" --revision="$rev"; fi; done \
   && echo "sudo apt --fix-broken install" \
   && sudo apt --fix-broken install
 
@@ -48,3 +48,4 @@ echo "npm update" \
 
 echo "sudo npm install -g npm" \
   && sudo npm install -g npm
+
