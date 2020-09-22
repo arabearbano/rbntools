@@ -16,6 +16,6 @@ do
   esac
 done;
 
-todo-txt do "$@"
+t do "$@"
 
 exit 0

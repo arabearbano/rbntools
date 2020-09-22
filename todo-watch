@@ -1,6 +1,6 @@
 #!/bin/bash
 function help {
-      echo "Add a new todo item"
+      echo "Watch todo list on a 10 seconds refresh"
       echo " ? --help print this help"	
 }
 
@@ -13,9 +13,14 @@ do
       help
       exit 2
       ;;
+    * )
+      echo "Invalid argument: ${!i}"
+      help
+      exit 2
+      ;;
   esac
 done;
 
-todo-txt -t add "$@"
-
+#Actual functionality goes here.
+app "todo-watch" watch -c -n 10 t list
 exit 0

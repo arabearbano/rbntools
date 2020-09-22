@@ -6,7 +6,7 @@ function help {
       echo " ? --help print this help"	
 }
 
-WORKDIR=`pwd`
+WORKDIR=$(pwd)
 
 for ((i=1;i<=$#;i++));
 do
@@ -37,6 +37,6 @@ if [ ! -d $WORKDIR ]; then
 	exit 1 
 fi
 
-BACKUPDIR=`date +%Y%m%d%H%M`-$WORKDIR
-rsync --progress -azvh $WORKDIR ~/bku/$BACKUPDIR
+BACKUPDIR=$(date +%Y%m%d%H%M)-$WORKDIR
+rsync --progress -azvh $WORKDIR $HOME/bku/$BACKUPDIR
 exit 0
