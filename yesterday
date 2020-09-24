@@ -26,8 +26,8 @@ do
 done;
 
 #Actual functionality goes here.
-cat ~/.todo-txt/done.txt | grep '@me' | sort
-cat ~/.todo-txt/done.txt | grep -v '@me' | sort
+cat ~/.todo/done.txt | grep '@me' | sort
+cat ~/.todo/done.txt | grep -v '@me' | sort
 if [ ! -z $STANDALONE ]; then
   echo "Press 'q' to exit"
   count=0
