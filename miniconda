@@ -1,0 +1,3 @@
+#!/bin/bash
+docker run --rm -t -i $(pwd):/workdir continuumio/miniconda /bin/bash -c "/opt/conda/bin/conda info && /bin/bash"
+exit 0

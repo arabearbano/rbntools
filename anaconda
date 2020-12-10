@@ -1,0 +1,3 @@
+#!/bin/bash
+docker run --rm -t -i -v $(pwd):/workdir continuumio/anaconda3 /bin/bash -c "/opt/conda/bin/conda info && /bin/bash"
+exit 0
