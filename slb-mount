@@ -1,0 +1,27 @@
+#!/bin/bash
+function help {
+      echo "Mount glb.home:/home/robento.delvalle into /mnt/glb"
+      echo " ? --help print this help"	
+}
+
+
+for ((i=1;i<=$#;i++));
+do
+  parameter=${!i}
+  case $parameter in
+    [?] | --help )
+      help
+      exit 2
+      ;;
+    * )
+      echo "Invalid argument: ${!i}"
+      help
+      exit 2
+      ;;
+  esac
+done;
+
+#Actual functionality goes here.
+sudo sshfs -o allow_other,IdentityFile=~/.ssh/id_rsa roberto.delvalle@glb.home:/home/roberto.delvalle/ /mnt/glb
+
+exit 0
