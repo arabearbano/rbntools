@@ -1,0 +1,27 @@
+#!/bin/bash
+function help {
+      echo "Create an ssh tunnel to glb.home on port 9090"
+      echo " ? --help print this help"	
+}
+
+
+for ((i=1;i<=$#;i++));
+do
+  parameter=${!i}
+  case $parameter in
+    [?] | --help )
+      help
+      exit 2
+      ;;
+    * )
+      echo "Invalid argument: ${!i}"
+      help
+      exit 2
+      ;;
+  esac
+done;
+
+#Actual functionality goes here.
+ssh -D 9090 roberto.delvalle@glb.home
+
+exit 0
