@@ -30,7 +30,7 @@ echo "npm update" \
 echo "sudo npm update -g" \
   && sudo npm update -g
 
-echo ' pacman -Qtdq | parallel --no-run-if-empty -j2% -n1 sudo pacman --noconfirm -Rns {}' \
+echo 'pacman -Qtdq | parallel --no-run-if-empty -j2% -n1 sudo pacman --noconfirm -Rns {}' \
   && pacman -Qtdq | parallel --no-run-if-empty -j2% -n1 sudo pacman --noconfirm -Rns {}
 
 echo "sudo pacman -Scc --noconfirm" \
@@ -59,7 +59,7 @@ echo "sudo -H pip3 install --upgrade httpie" \
 #echo "sudo -H pip3 install --upgrade parquet-cli" \
 #  && sudo -H pip3 install --upgrade parquet-cli
 
-echo "npm update" \
-  && npm update
 
+#echo "flatpak upgrade" \
+  && flatpak upgrade
 exit 0
