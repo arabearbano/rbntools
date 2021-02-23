@@ -1,6 +1,6 @@
 #!/bin/bash
 function help {
-      echo "Opens page in incognito rbn chrome window"
+      echo "Opens page in incognito firefox window"
       echo " ? --help print this help"	
 }
 

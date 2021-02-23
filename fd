@@ -1,6 +1,6 @@
 #!/bin/bash
 function help {
-      echo "Opens page in rbn chrome window"
+      echo "Opens page in frontdoor chrome window"
       echo " ? --help print this help"	
 }
 
@@ -16,6 +16,6 @@ do
   esac
 done;
 
-google-chrome-stable --profile-directory=rbn --new-window "$@"
+google-chrome-stable --profile-directory=frontdoor --new-window "$@"
 
 exit 0
