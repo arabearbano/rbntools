@@ -60,6 +60,7 @@ echo "sudo -H pip3 install --upgrade httpie" \
 #  && sudo -H pip3 install --upgrade parquet-cli
 
 
-#echo "flatpak upgrade" \
+echo "flatpak upgrade" \
   && flatpak upgrade
+
 exit 0
